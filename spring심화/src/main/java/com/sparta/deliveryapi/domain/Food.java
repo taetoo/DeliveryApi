@@ -1,6 +1,5 @@
 package com.sparta.deliveryapi.domain;
 
-import com.sparta.deliveryapi.dto.FoodRequestDto;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -27,6 +26,7 @@ public class Food {
     private int price;
 
     // 사용은 가능한데 속성을 바꿀순 없어, 프라이빗은 같은 클래스 안에서만 쓰일 수 있기 때문에, 다른 클래스에서 사용하기위해 생성해줌
+    // 서비스단에서 사용할 틀애 따라서 필요한 것
     public Food(Long restaurantId, String name, int price) {
         this.restaurantId = restaurantId;
         this.name = name;

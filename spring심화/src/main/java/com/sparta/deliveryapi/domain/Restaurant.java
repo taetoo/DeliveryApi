@@ -23,10 +23,6 @@ public class Restaurant {
     @Column(nullable = false)
     private String name;
 
-//    @OneToMany  /// Food 안에서 받아오자
-//    @JoinColumn(nullable = false)
-//    private List<Food> foods;
-
     @Column(nullable = false)
     private int minOrderPrice;
 

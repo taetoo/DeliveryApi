@@ -20,6 +20,13 @@ public class RestaurantService {
     // spring 에게 알려줘야 한다.
     private final RestaurantRepository restaurantRepository;
 
+
+    public Restaurant restaurantFindId(Long id){
+        return restaurantRepository.findById(id).orElseThrow(
+                () -> new IllegalArgumentException("없다!")
+        );
+    }
+
     @Transactional
     public Restaurant addRestaurant(@RequestBody RestaurantRequestDto requestDto) {
 

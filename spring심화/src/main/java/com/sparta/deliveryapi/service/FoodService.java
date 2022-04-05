@@ -18,7 +18,14 @@ import java.util.Optional;
 public class FoodService {
 
     private final FoodRepository foodRepository;
-    private final RestaurantService restaurantService;
+//    private final RestaurantService restaurantService;
+
+    public Food foodDetail(Long id){
+       return foodRepository.findById(id).orElseThrow(
+               () -> new IllegalArgumentException("없다!")
+       );
+    }
+
 
 
     @Transactional
@@ -46,7 +53,8 @@ public class FoodService {
             Food food = new Food(restaurantId,foodName,foodPrice);
             foodRepository.save(food);
 
-            // 여기서 dto 객체를 쪼개서 다시 각가의 객체로 나누었기 때문에 각각 매개변수를 저장해준다.
+
+            // 여기서 dto 객체를 쪼개서 다시 각가의 객체로 나누었기 때문에 쪼개진 각각의 매개변수를 저장해준다.
         }
 
     }
