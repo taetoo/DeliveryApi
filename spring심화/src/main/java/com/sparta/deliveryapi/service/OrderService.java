@@ -46,7 +46,7 @@ public class OrderService {
         int totalPrice = 0;
 
 
-        // OrderDto와 Orders에 들어갈 FoodOrderDto 리스트가 필요하기 때문에 각각 생성
+        // OrdersDto에 들어갈 FoodOrderDto 리스트와 Orders에 들어갈 FoodOrder 리스트가 필요하기 때문에 각각 생성
         // 리턴할 타입의 리스트 생성
         List<FoodOrderDto> foodOrderDto = new ArrayList<>();
 
