@@ -18,14 +18,6 @@ import java.util.Optional;
 public class FoodService {
 
     private final FoodRepository foodRepository;
-//    private final RestaurantService restaurantService;
-
-    public Food foodDetail(Long id){
-       return foodRepository.findById(id).orElseThrow(
-               () -> new IllegalArgumentException("없다!")
-       );
-    }
-
 
 
     @Transactional

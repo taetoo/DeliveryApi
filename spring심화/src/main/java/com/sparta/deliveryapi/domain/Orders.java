@@ -1,19 +1,14 @@
 package com.sparta.deliveryapi.domain;
 
-import com.sparta.deliveryapi.dto.orderResponse.OrdersDto;
-import com.sparta.deliveryapi.service.OrderService;
-import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
-import lombok.Setter;
 
 import javax.persistence.*;
 import java.util.List;
 
-@AllArgsConstructor
+
 @NoArgsConstructor
 @Entity
-@Setter
 @Getter
 public class Orders {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -29,16 +24,17 @@ public class Orders {
     @Column(nullable = false)
     private int totalPrice;
 
-    @OneToMany(mappedBy = "foodOrders")
-    private List<FoodOrder> foodOrderList;
+    @OneToMany // Orders 에 여러 주문이 들어와서 취합되기 때문
+    @JoinColumn(name = "FOOD_ORDER_ID")
+    private List<FoodOrder> foods;
 
 
 
-    public Orders(Restaurant restaurant, List<FoodOrder> foodOrderList){
-        this.totalPrice = OrderService.totalPrice(restaurant, foodOrderList);
-        this.deliveryFee = restaurant.getDeliveryFee();
-        this.restaurantName = restaurant.getName();
-        this.foodOrderList = foodOrderList;
+    public Orders(int totalPrice, String restaurantName, int deliveryFee, List<FoodOrder> foods){
+        this.totalPrice = totalPrice;
+        this.restaurantName = restaurantName;
+        this.deliveryFee = deliveryFee;
+        this.foods = foods;
 
 
 
